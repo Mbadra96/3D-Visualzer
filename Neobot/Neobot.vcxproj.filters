@@ -18,18 +18,33 @@
     <ClInclude Include="src\Neobot\Core.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Neobot\Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Neobot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Neobot\EntryPoint.h">
+    <ClInclude Include="src\Neobot\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neobot\Simulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neobot\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Neobot\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Neobot\Application.cpp">
+    <ClCompile Include="src\Neobot\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neobot\Simulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neobot\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Neobot\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

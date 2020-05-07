@@ -1,19 +1,10 @@
 #include <Neobot.h>
+#include <iostream>
 
-class Sandbox : public Neobot::Application
+
+int main(int argc, char** argv)
 {
-public: 
-	Sandbox()
-	{
+	return 0;
 
-	}
-	~Sandbox()
-	{
-
-	}
-};
-
-Neobot::Application* Neobot::CreateApplication()
-{
-	return new Sandbox();
 }
+

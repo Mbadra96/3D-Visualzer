@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Neobot/Application.h"
+#include "Neobot/Simulator.h"
+#include "Neobot/Log.h"
 
-//-- EntryPoint
-
-#include "Neobot/EntryPoint.h"
+#include "Neobot/World.h"

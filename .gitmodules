@@ -1,0 +1,3 @@
+[submodule "Neobot/vendor/spdlog"]
+	path = Neobot/vendor/spdlog
+	url = https://github.com/gabime/spdlog
