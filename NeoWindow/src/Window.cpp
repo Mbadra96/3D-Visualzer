@@ -57,7 +57,7 @@ void Window::Draw(std::vector<Shape*>& shapes)
     m_ModelShader->setUniformMat4f("u_View", Window::camera.GetViewMatrix());
     m_ModelShader->setUniformVec3f("viewPos", Window::camera.GetPosition());
     //Light 
-    m_ModelShader->setUniformVec3f("light.position", m_LightPosition);
+    m_ModelShader->setUniformVec3f("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
     m_ModelShader->setUniformVec3f("light.diffuse", glm::vec3(0.5f,0.5f,0.5f));
     m_ModelShader->setUniformVec3f("light.ambient", glm::vec3(0.2f,0.2f,0.2f));
     m_ModelShader->setUniformVec3f("light.specular", glm::vec3(1.0f,1.0f,1.0f));
@@ -75,7 +75,7 @@ void Window::Draw(std::vector<Shape*>& shapes)
 }
 
 Window::Window()
-    :m_GLFWWindow(nullptr), m_LightPosition(glm::vec3(1.2f,1.0f,2.0f))
+    :m_GLFWWindow(nullptr)
 
 {
 

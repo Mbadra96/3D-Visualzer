@@ -19,8 +19,6 @@ public:
 private:
 	GLFWwindow* m_GLFWWindow;
 	std::unique_ptr <Shader> m_ModelShader;
-	std::unique_ptr <Shader> m_LightSourceShader;
-	glm::vec3 m_LightPosition;
 	static glm::mat4 m_Proj;
 	static int entered_flag;
 	static int right_mouse_flag;
