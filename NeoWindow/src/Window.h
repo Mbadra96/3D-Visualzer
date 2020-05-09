@@ -3,8 +3,8 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
 #include "Shape.h"
+#include "glm/gtc/matrix_transform.hpp"
 #include "Shader.h"
 #include <vector>
 #include "Camera.h"

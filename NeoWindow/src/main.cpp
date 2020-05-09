@@ -1,40 +1,38 @@
 #include "Window.h"
-
+#include "Model.h"
+#include "Line.h"
+#include "Floor.h"
 int main(void)
 {
     Window window;
     window.Init();
 
     
-    Shape shape1;
-    Shape shape2;
-    Shape shape3;
-    Shape shape4;
-    Shape shape5;
-    Shape shape6;
-
-    shape1.Translate(-1, -1, -1);
-    shape2.Translate(-1, 1, -1);
-    shape3.Translate(-1, 1, 1);
-    shape4.Translate(1, -1, -1);
-    shape5.Translate(1, 1, -1);
-    shape6.Translate(1, 1, 1);
-    std::vector<Shape*> shapes;
-    shapes.push_back(&shape1);
-    shapes.push_back(&shape2);
-    shapes.push_back(&shape3);
-    shapes.push_back(&shape4);
-    shapes.push_back(&shape5);
-    shapes.push_back(&shape6);
-
+    auto model1 = new Model("res/textures/cylinder.stl",1.0f,0.0f,0.0f);
+    auto xline = new Line(0.0, 0.0, 0.0, 10.0, 0.0, 0.0,0.0,0.0,1.0);
+    auto yline = new Line(0.0, 0.0, 0.0, 0.0, 10.0, 0.0,0.0,1.0,0.0);
+    auto zline = new Line(0.0, 0.0, 0.0, 0.0, 0.0, 10.0,1.0,0.0,0.0);
+    auto floor = new Floor();
+    std::vector<Shape*> models;
     
-
+    models.push_back(model1);
+    models.push_back(xline);
+    models.push_back(yline);
+    models.push_back(zline);
+    models.push_back(floor);
+    
     while (!window.WindowClosed())
     {
-        //shape1.Rotate(1.0f, 1.0f, 1.0f, 1.0f);
-;        window.Draw(shapes);
+
+        //model1->Rotate(1.0, 0.0f, 0.0f, 1.0f);
+        window.Draw(models);
     }
 
+    delete xline;
+    delete yline;
+    delete zline;
+    delete floor;
+    delete model1;
 
 
 }

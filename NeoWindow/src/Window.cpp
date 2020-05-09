@@ -19,8 +19,8 @@ int Window::Init()
     /* Make the window's context current */
     glfwMakeContextCurrent(m_GLFWWindow);
 
-    //
-    glfwSwapInterval(1);
+    //makes 60 FPS
+    glfwSwapInterval(1); 
     /*Init Glew After Having A Valid Context*/
     if (glewInit() != GLEW_OK)
         std::cout << "ERROR" << std::endl;
@@ -30,7 +30,7 @@ int Window::Init()
     glEnable(GL_DEPTH_TEST);
 
     
-    m_ModelShader = std::make_unique<Shader>("res/shaders/BasicLight.shader");
+    m_ModelShader = std::make_unique<Shader>("res/shaders/ColorShader.shader");
 
     // Camera View Set
     glfwSetWindowSizeCallback(m_GLFWWindow, &Window::window_size_callback);
@@ -64,7 +64,7 @@ void Window::Draw(std::vector<Shape*>& shapes)
 
     for (int i = 0; i < shapes.size(); i++)
     {
-        shapes[i]->OnRender(*m_ModelShader);
+        shapes[i]->Draw(*m_ModelShader);
     }
     /* Swap front and back buffers */
     glfwSwapBuffers(m_GLFWWindow);
@@ -89,7 +89,7 @@ Window::~Window()
 void Window::window_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
-    Window::m_Proj = glm::perspective(glm::radians(45.0f), (float)width / height, 0.1f, 100.0f);
+    Window::m_Proj = glm::perspective(glm::radians(Window::camera.GetZoom()), (float)width / height, 0.1f, 100.0f);
 }
 void Window::cursor_position_callback(GLFWwindow* window, double xPos, double yPos)
 {
