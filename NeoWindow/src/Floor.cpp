@@ -8,16 +8,16 @@ Floor::Floor()
     //Draw Rows
     for (int i = -Rows/2; i <= Rows/2; i++)
     {
-        this->m_Vertices.push_back(glm::vec3(-Rows / 2, -i, 0));
-        this->m_Vertices.push_back(glm::vec3(Rows / 2, -i, 0));
+        this->m_Vertices.push_back(glm::vec3(-Rows / 2, 0.0, -i));
+        this->m_Vertices.push_back(glm::vec3(Rows / 2, 0.0, -i));
         this->m_Indices.push_back(ind_count++);
         this->m_Indices.push_back(ind_count++);
     }
 
     for (int i = -Rows / 2; i <= Rows / 2; i++)
     {
-        this->m_Vertices.push_back(glm::vec3(-i, -Rows / 2, 0));
-        this->m_Vertices.push_back(glm::vec3(-i, Rows / 2, 0));
+        this->m_Vertices.push_back(glm::vec3(-i,0.0, -Rows / 2));
+        this->m_Vertices.push_back(glm::vec3(-i, 0.0, Rows / 2));
         this->m_Indices.push_back(ind_count++);
         this->m_Indices.push_back(ind_count++);
     }

@@ -8,14 +8,15 @@ int main(void)
     window.Init();
 
     
-    auto model1 = new Model("res/textures/cylinder.stl",1.0f,0.0f,0.0f);
+    auto cylinder1 = new Model("res/textures/cylinder.stl",1.0f,0.0f,0.0f);
+
     auto xline = new Line(0.0, 0.0, 0.0, 10.0, 0.0, 0.0,0.0,0.0,1.0);
     auto yline = new Line(0.0, 0.0, 0.0, 0.0, 10.0, 0.0,0.0,1.0,0.0);
     auto zline = new Line(0.0, 0.0, 0.0, 0.0, 0.0, 10.0,1.0,0.0,0.0);
     auto floor = new Floor();
     std::vector<Shape*> models;
     
-    models.push_back(model1);
+    models.push_back(cylinder1);
     models.push_back(xline);
     models.push_back(yline);
     models.push_back(zline);
@@ -23,8 +24,6 @@ int main(void)
     
     while (!window.WindowClosed())
     {
-
-        //model1->Rotate(1.0, 0.0f, 0.0f, 1.0f);
         window.Draw(models);
     }
 
@@ -32,7 +31,8 @@ int main(void)
     delete yline;
     delete zline;
     delete floor;
-    delete model1;
+    delete cylinder1;
+
 
 
 }

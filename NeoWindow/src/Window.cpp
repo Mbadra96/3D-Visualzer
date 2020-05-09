@@ -9,7 +9,7 @@ int Window::Init()
 
 
     /* Create a windowed mode window and its OpenGL context */
-    m_GLFWWindow = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    m_GLFWWindow = glfwCreateWindow(680, 480, "Hello World", NULL, NULL);
     if (!m_GLFWWindow)
     {
         glfwTerminate();
@@ -54,10 +54,10 @@ void Window::Draw(std::vector<Shape*>& shapes)
     //Shapes Draw
     m_ModelShader->Bind();
     m_ModelShader->setUniformMat4f("u_Projection", m_Proj);
-    m_ModelShader->setUniformMat4f("u_View", Window::camera.GetViewMatrix());
+    m_ModelShader->setUniformMat4f("u_View",camera.GetViewMatrix());
     m_ModelShader->setUniformVec3f("viewPos", Window::camera.GetPosition());
     //Light 
-    m_ModelShader->setUniformVec3f("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+    m_ModelShader->setUniformVec3f("light.direction", glm::vec3(-1.0f, -1.0f, -1.0f));
     m_ModelShader->setUniformVec3f("light.diffuse", glm::vec3(0.5f,0.5f,0.5f));
     m_ModelShader->setUniformVec3f("light.ambient", glm::vec3(0.2f,0.2f,0.2f));
     m_ModelShader->setUniformVec3f("light.specular", glm::vec3(1.0f,1.0f,1.0f));
@@ -89,13 +89,13 @@ Window::~Window()
 void Window::window_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
-    Window::m_Proj = glm::perspective(glm::radians(Window::camera.GetZoom()), (float)width / height, 0.1f, 100.0f);
+    Window::m_Proj = glm::perspective(45.0f, (float)width / height, 0.1f, 100.0f);
 }
 void Window::cursor_position_callback(GLFWwindow* window, double xPos, double yPos)
 {
     if (Window::entered_flag)
     {
-        
+        if (left_mouse_flag) {
             if (firstMouse)
             {
                 lastx = xPos;
@@ -109,8 +109,9 @@ void Window::cursor_position_callback(GLFWwindow* window, double xPos, double yP
             lastx = xPos;
             lasty = yPos;
 
+
             camera.ProcessMouseMovement(xOffset, yOffset);
-        
+        }
     }
 }
 void Window::cursor_enter_callback(GLFWwindow* window, int entered)
@@ -128,8 +129,7 @@ void Window::mouse_button_callback(GLFWwindow* window, int button, int action, i
         else if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
         {
             Window::right_mouse_flag = 0;
-            Window::lastx = -1000.0;
-            Window::lasty = -1000.0;
+            firstMouse = true;
         }
         else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
         {
@@ -138,8 +138,7 @@ void Window::mouse_button_callback(GLFWwindow* window, int button, int action, i
         else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
         {
             Window::left_mouse_flag = 0;
-            Window::lastx = -1000.0;
-            Window::lasty = -1000.0;
+            firstMouse = true;
         }
     }
 }
@@ -176,6 +175,7 @@ void Window::DoMovement()
     }
 }
 
+
 // Is called whenever a key is pressed/released via GLFW
 void Window::KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
@@ -183,7 +183,6 @@ void Window::KeyCallback(GLFWwindow* window, int key, int scancode, int action, 
     {
         glfwSetWindowShouldClose(window, GL_TRUE);
     }
-
     if (key >= 0 && key < 1024)
     {
         if (action == GLFW_PRESS)
