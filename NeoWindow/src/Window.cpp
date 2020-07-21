@@ -9,7 +9,7 @@ int Window::Init()
 
 
     /* Create a windowed mode window and its OpenGL context */
-    m_GLFWWindow = glfwCreateWindow(680, 480, "Hello World", NULL, NULL);
+    m_GLFWWindow = glfwCreateWindow(680, 480, "NEOWINDOW", NULL, NULL);
     if (!m_GLFWWindow)
     {
         glfwTerminate();
@@ -43,7 +43,7 @@ int Window::Init()
 
 }
 
-void Window::Draw(std::vector<Shape*>& shapes)
+void Window::Draw(std::map<int, Shape*>& shapes)
 {
 
     /* Render here */
@@ -62,9 +62,9 @@ void Window::Draw(std::vector<Shape*>& shapes)
     m_ModelShader->setUniformVec3f("light.ambient", glm::vec3(0.2f,0.2f,0.2f));
     m_ModelShader->setUniformVec3f("light.specular", glm::vec3(1.0f,1.0f,1.0f));
 
-    for (int i = 0; i < shapes.size(); i++)
+    for (auto itr = shapes.begin(); itr != shapes.end(); ++itr)
     {
-        shapes[i]->Draw(*m_ModelShader);
+        itr->second->Draw(*m_ModelShader);
     }
     /* Swap front and back buffers */
     glfwSwapBuffers(m_GLFWWindow);

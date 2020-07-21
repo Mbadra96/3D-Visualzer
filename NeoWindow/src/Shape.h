@@ -12,7 +12,9 @@ public:
 	virtual ~Shape() {};
 	void Translate(float x, float y, float z)
 	{
-		m_Model = glm::translate(m_Model, glm::vec3(x, y, z));
+		m_Model[3][0] += x;
+		m_Model[3][1] += y;
+		m_Model[3][2] += z;
 	}
 	void SetPosition(float x, float y, float z)
 	{

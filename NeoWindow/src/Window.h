@@ -7,6 +7,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "Shader.h"
 #include <vector>
+#include <map>
 #include "Camera.h"
 class Window
 {
@@ -14,7 +15,7 @@ public:
 	Window();
 	~Window();
 	int Init();
-	void Draw(std::vector<Shape*>& shapes);
+	void Draw(std::map<int,Shape*>& shapes);
 	int WindowClosed() { return glfwWindowShouldClose(m_GLFWWindow); }
 private:
 	GLFWwindow* m_GLFWWindow;

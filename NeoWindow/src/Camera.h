@@ -20,8 +20,8 @@ enum Camera_Movement
 
 // Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
 // Default camera values
-const GLfloat YAW =-135;
-const GLfloat PITCH =-45;
+const GLfloat YAW =-90;
+const GLfloat PITCH =0;
 const GLfloat SPEED = 1.0f;
 const GLfloat SENSITIVTY = 0.25f;
 const GLfloat ZOOM = 45.0f;
@@ -31,7 +31,7 @@ class Camera
 {
 public:
     // Constructor with vectors
-    Camera(glm::vec3 position = glm::vec3(5.0f, 5.0f, 5.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), GLfloat yaw = YAW, GLfloat pitch = PITCH) : front(glm::vec3(0.0f, 0.0f, -1.0f)), movementSpeed(SPEED), mouseSensitivity(SENSITIVTY), zoom(ZOOM)
+    Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 10.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), GLfloat yaw = YAW, GLfloat pitch = PITCH) : front(glm::vec3(0.0f, 0.0f, 0.0f)), movementSpeed(SPEED), mouseSensitivity(SENSITIVTY), zoom(ZOOM)
     {
         this->position = position;
         this->worldUp = up;
